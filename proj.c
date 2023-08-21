@@ -1,40 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
-
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-
-
- struct item
+struct item
 {
-	char productname[40],c;
-	int productid;
-	float price;
-	int Qnt;
-}st;
-
-struct item*p;
+    char productname[40];
+    int productid;
+    float price;
+    int Qnt;
+} st;
 
 int shop();
 int menu();
-float bill();
-void cart();
-void admin();
-int dcart();
-void add_item();
-void deleteproduct();
 void search_item();
 void read_item();
+void admin();
+void add_item();
+void deleteproduct();
 void edit_item();
-
-
 
 
 void main()
 {
 	int num,id;
     char name[20],phone[11];
-
 	
 	printf("\n\n\t\t\t ***********************\n");
 	printf("\t\t\t * WELCOME TO THE MART *\n");
@@ -45,7 +35,6 @@ void main()
 	printf("Name: \n");
 	gets(name);
 	
-	
 	printf("Number: \n");
     gets(phone);	
 	
@@ -54,7 +43,6 @@ void main()
 	
    while(1)
    {
-	
 	switch(shop())
 	{
 	case 1: menu();
@@ -93,9 +81,7 @@ int shop()
     break;
  }
  return choose;
- 
 }
-
 
 int menu()
 {
@@ -109,7 +95,6 @@ printf("\n\t\tPress <3> Exit!\n");
 	
 printf("\n\t\tEnter your choice[1-3]");
 scanf("%i", &choice);
-	
 	
 	switch(choice)	
 	{
@@ -126,7 +111,6 @@ scanf("%i", &choice);
 	    printf("Invalid Choice! System Exit\n");
 		getch();
 	}
-	
 }
 
 void search_item()
@@ -154,7 +138,6 @@ void search_item()
 printf("\n Record found");
 printf("\nProduct Name\t\t:%s \nProduct Price\t\t:%f \nProduct ID\t\t:%d \nProduct Quantity\t:%d",
 st.productname, st.price, st.productid, st.Qnt);
-	
 	}
 	else 
 		printf("Noo Record found");
@@ -184,7 +167,6 @@ void read_item()
 		printf("Product ID\t");
 		printf("Product Quantity\t\t");
 		
-		
 		printf("----------------------------------------------------------------\n");
 		
     while(fscanf(f,"%s %f %d %d\n", st.productname, &st.price, &st.productid,&st.Qnt)!=EOF)
@@ -204,7 +186,6 @@ void read_item()
 		menu();
 }
 
-
 float bill()
 {
 	int x,q;
@@ -221,7 +202,6 @@ float bill()
         printf("\nenter quantity:");
         scanf("%d",&q);
 		
-
         printf("\nPRODUCT NAME = %s\n",st.productname);
         printf("QUANTITY = %d\n",st.Qnt);
         printf("PRICE = %f\n",st.price);
@@ -229,12 +209,10 @@ float bill()
         printf("%f\n",total);
 		gtotal=gtotal+total;
 		printf("\nTOTAL AMOUNT = Rs. %f\n",gtotal);
-        
 		
     fclose(f);
     getch();
     shop();
-    
 }  
 
 void cart()
@@ -275,9 +253,7 @@ p+=p;
    return;
    fclose(f);
    cart();
- 
 }
-
 
 void admin()
 {
@@ -319,7 +295,6 @@ void add_item()
 	int a=0;
 
 	FILE *f;
-	
 
 	do
 	{
@@ -375,7 +350,6 @@ while(fscanf(f,"%s %f %d %d", st.productname, &st.price, &st.productid,&st.Qnt)!
 		getch();
 		}
 	}while(!valid);
-		
 		
 	do
 	{
@@ -496,8 +470,7 @@ if(id==st.productid)
 	printf("\n\n\t*** New Record ***");
 		
  do
- {
-					
+ {				
 	fflush(stdin);
 	printf("\nNew Product Name\t\t: ");
 	gets(st.productname);
@@ -546,8 +519,7 @@ if(id==st.productid)
 	}
 	
  }while(st.Qnt<1 || st.Qnt>500);
-				
-				
+						
 	printf("Press 'y' to edit the existing record or any key to cancel...");
 	edit=getche();
 	
@@ -562,8 +534,7 @@ if(id==st.productid)
 	{
 	fprintf(rp,"%s %f %d %d\n", st.productname,st.price, st.productid,st.Qnt);
 	fflush(stdin);
-	}
-			
+	}		
 }
 	if(!a)
     {
